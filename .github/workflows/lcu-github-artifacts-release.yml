@@ -1,19 +1,19 @@
-name: GitHub Artifacts - Release
+name: fathymregtest/html
 
 on:
   push:
-    branches: [main,integration]
+    branches: [main]
   pull_request:
-    branches: [main,integration]
+    branches: [main]
 
 permissions: write-all
 
 env:
   CI: false
-  Branches: main,integration
+  Branches: main
   MainBranch: main
   NPMRegistry: https://registry.npmjs.org/
-  InstallCommand: npm ci
+  InstallCommand: npm i
   BuildCommand: npm run build
   Output: ./
 
