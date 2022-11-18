@@ -1,19 +1,19 @@
-name: GitHub Artifacts - Release
+name: fathymregtest/html
 
 on:
   push:
-    branches: [main,integration]
+    branches: [main]
   pull_request:
-    branches: [main,integration]
+    branches: [main]
 
 permissions: write-all
 
 env:
   CI: false
-  Branches: main,integration
+  Branches: main
   MainBranch: main
   NPMRegistry: https://registry.npmjs.org/
-  InstallCommand: npm ci
+  InstallCommand: npm i
   BuildCommand: npm run build
   Output: ./
 
@@ -77,7 +77,7 @@ jobs:
       - uses: actions/setup-node@v2
         if: ${{ (!!env.InstallCommand || !!env.BuildCommand) && steps.package_json_exists.outputs.files_exists == 'true' }}
         with:
-          node-version: 14
+          node-version: '*'
           registry-url: ${{ env.NPMRegistry }}
 
       # install npm dependencies from package-lock.json
